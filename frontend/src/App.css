@@ -519,6 +519,20 @@ p {
   padding: var(--spacing-3xl) 0;
 }
 
+/* About Image Section */
+.about-image-section {
+  margin: var(--spacing-4xl) 0;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.about-image-section img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius-lg);
+}
+
 /* ==========================================
    MENU PAGE
    ========================================== */
