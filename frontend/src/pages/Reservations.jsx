@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Calendar, Clock, Users } from 'lucide-react';
-import { useToast } from '../hooks/use-toast';
+import { toast } from 'sonner';
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 }
+};
 
 const Reservations = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -30,9 +37,8 @@ const Reservations = () => {
     reservations.push(newReservation);
     localStorage.setItem('reservations', JSON.stringify(reservations));
 
-    toast({
-      title: "Reservation Submitted!",
-      description: `Thank you ${formData.name}! We'll confirm your booking shortly.`,
+    toast.success('Reservation Submitted!', {
+      description: `Thank you ${formData.name}! We'll confirm your booking shortly.`
     });
 
     setFormData({
@@ -47,52 +53,88 @@ const Reservations = () => {
   return (
     <div className="page-reservations">
       <section className="reservations-hero">
-        <div className="reservations-hero-container">
+        <motion.div 
+          className="reservations-hero-container"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <h1 className="page-title">Book a Table</h1>
           <p className="page-subtitle">
             Reserve your spot and get ready for an unforgettable Italian dining experience
           </p>
-        </div>
+        </motion.div>
       </section>
 
       <section className="reservations-content">
         <div className="reservations-container">
-          <div className="reservation-info">
+          <motion.div 
+            className="reservation-info"
+            {...fadeInUp}
+          >
             <h2 className="section-title">Plan Your Visit</h2>
             <p className="info-text">
               We recommend booking in advance, especially for weekends and special occasions.
               Our friendly staff will ensure you have the perfect table for your party.
             </p>
-            <div className="info-cards">
-              <div className="info-card">
+            <motion.div 
+              className="info-cards"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ staggerChildren: 0.1 }}
+            >
+              <motion.div 
+                className="info-card"
+                whileHover={{ x: 8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Calendar size={28} />
                 <div>
                   <h4>Flexible Dates</h4>
                   <p>Available 7 days a week</p>
                 </div>
-              </div>
-              <div className="info-card">
+              </motion.div>
+              <motion.div 
+                className="info-card"
+                whileHover={{ x: 8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Clock size={28} />
                 <div>
                   <h4>Perfect Timing</h4>
                   <p>Lunch & dinner service</p>
                 </div>
-              </div>
-              <div className="info-card">
+              </motion.div>
+              <motion.div 
+                className="info-card"
+                whileHover={{ x: 8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Users size={28} />
                 <div>
                   <h4>Any Group Size</h4>
                   <p>From couples to parties</p>
                 </div>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
-          <div className="reservation-form-wrapper">
+          <motion.div 
+            className="reservation-form-wrapper"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <form onSubmit={handleSubmit} className="reservation-form">
               <h3 className="form-title">Reservation Details</h3>
               
-              <div className="form-group">
+              <motion.div 
+                className="form-group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
                 <label htmlFor="name" className="form-label">Your Name</label>
                 <input
                   type="text"
@@ -104,9 +146,14 @@ const Reservations = () => {
                   className="form-input"
                   placeholder="Enter your full name"
                 />
-              </div>
+              </motion.div>
 
-              <div className="form-group">
+              <motion.div 
+                className="form-group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
                 <label htmlFor="phone" className="form-label">Phone Number</label>
                 <input
                   type="tel"
@@ -118,9 +165,14 @@ const Reservations = () => {
                   className="form-input"
                   placeholder="+389 XX XXX XXX"
                 />
-              </div>
+              </motion.div>
 
-              <div className="form-row">
+              <motion.div 
+                className="form-row"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
                 <div className="form-group">
                   <label htmlFor="date" className="form-label">Date</label>
                   <input
@@ -147,9 +199,14 @@ const Reservations = () => {
                     className="form-input"
                   />
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="form-group">
+              <motion.div 
+                className="form-group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
                 <label htmlFor="guests" className="form-label">Number of Guests</label>
                 <select
                   id="guests"
@@ -162,13 +219,21 @@ const Reservations = () => {
                     <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
                   ))}
                 </select>
-              </div>
+              </motion.div>
 
-              <button type="submit" className="btn-primary full-width">
+              <motion.button 
+                type="submit" 
+                className="btn-primary full-width"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+              >
                 Confirm Reservation
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
