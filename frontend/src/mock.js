@@ -117,32 +117,56 @@ export const galleryImages = [
   {
     id: 1,
     title: "Our Signature Pizza",
-    category: "food"
+    category: "food",
+    url: "https://images.unsplash.com/photo-1680405620826-83b0f0f61b28"
   },
   {
     id: 2,
     title: "Cozy Dining Area",
-    category: "ambiance"
+    category: "ambiance",
+    url: "https://images.unsplash.com/photo-1766847733845-6b2eaee1043b"
   },
   {
     id: 3,
     title: "Fresh Pasta",
-    category: "food"
+    category: "food",
+    url: "https://images.unsplash.com/photo-1735640268811-9c614c08b0dc"
   },
   {
     id: 4,
-    title: "Outdoor Seating",
-    category: "ambiance"
+    title: "Elegant Dining Room",
+    category: "ambiance",
+    url: "https://images.unsplash.com/photo-1765099271664-614c541196ef"
   },
   {
     id: 5,
     title: "Italian Desserts",
-    category: "food"
+    category: "food",
+    url: "https://images.unsplash.com/photo-1553683315-dbc11cde81ad"
   },
   {
     id: 6,
     title: "Wood-Fired Oven",
-    category: "kitchen"
+    category: "kitchen",
+    url: "https://images.unsplash.com/photo-1646656352194-7db15ee021bf"
+  },
+  {
+    id: 7,
+    title: "Margherita Pizza",
+    category: "food",
+    url: "https://images.unsplash.com/photo-1649688423692-308d2fc1027d"
+  },
+  {
+    id: 8,
+    title: "Intimate Table Setting",
+    category: "ambiance",
+    url: "https://images.unsplash.com/photo-1762806883627-4bcbfad98a2c"
+  },
+  {
+    id: 9,
+    title: "Pizza Preparation",
+    category: "kitchen",
+    url: "https://images.pexels.com/photos/29626980/pexels-photo-29626980.jpeg"
   }
 ];
 
